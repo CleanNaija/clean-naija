@@ -1,6 +1,12 @@
+"use client";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Header() {
+  const router = useRouter();
+  const navlogin = () => {
+    router.push("/login");
+  };
   return (
     <header className="flex h-[15vh] w-[80%] items-center justify-between">
       <div className="flex items-center gap-[5px]">
@@ -19,7 +25,10 @@ export default function Header() {
       </nav>
 
       <div className="flex gap-[10px] text-[0.8125rem] font-[500]">
-        <button className="w-[80px] rounded-[20px] bg-white px-[10px] py-[5px] text-[#06402b]">
+        <button
+          className="w-[80px] rounded-[20px] bg-white px-[10px] py-[5px] text-[#06402b]"
+          onClick={navlogin}
+        >
           Log In
         </button>
         <button className="w-[80px] rounded-[20px] bg-[#003676] px-[10px] py-[5px]">

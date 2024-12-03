@@ -3,7 +3,10 @@ import "./globals.css";
 import Head from "next/head";
 
 export const metadata: Metadata = {
-  title: "CleanNaija",
+  title: {
+    template: "%s | CleanNaija",
+    default: "CleanNaija",
+  },
   description: "Making healthy environments the new cool!",
 };
 
