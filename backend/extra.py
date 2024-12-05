@@ -139,3 +139,24 @@ class RegisterView(APIView):
             }, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+'''
+
+
+
+DATABASES = {
+     'default': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'waste_management',
+        'USER': 'admin',
+        'PASSWORD': 'oyindamola',
+        'HOST': 'localhost',
+        'PORT': '5432',
+}
+}
+
+
+
+'''
