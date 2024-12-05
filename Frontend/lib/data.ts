@@ -1,4 +1,4 @@
-import { Feature } from "./definitions";
+import { Feature, Navlink } from "./definitions";
 export const featuresgrid: Feature[] = [
   {
     heading: "Nearby Waste Services",
@@ -29,5 +29,43 @@ export const featuresgrid: Feature[] = [
     heading: "Innovative Waste Solutions",
     description:
       "Empowering individuals and businesses with tools for a cleaner future.",
+  },
+];
+
+export const nav: Navlink[] = [
+  {
+    imagesrc: "/home.svg",
+    description: "Home",
+    href: "",
+  },
+  {
+    imagesrc: "/person.svg",
+    description: "Profile",
+    href: "",
+  },
+  {
+    imagesrc: "/calendar.svg",
+    description: "Order History",
+    href: "",
+  },
+  {
+    imagesrc: "/bag.svg",
+    description: "Services",
+    href: "",
+  },
+  {
+    imagesrc: "/file.svg",
+    description: "Articles",
+    href: "",
+  },
+  {
+    imagesrc: "/settings.svg",
+    description: "Setting",
+    href: "",
+  },
+  {
+    imagesrc: "/close.svg",
+    description: "Log out",
+    href: "",
   },
 ];
