@@ -1,4 +1,11 @@
+"use client";
+import { useRouter } from "next/navigation";
+
 export default function Login() {
+  const router = useRouter();
+  const navDash = () => {
+    router.push("/dashboard");
+  };
   return (
     <div className="roboto flex h-[100vh] w-[100vw]">
       <section className="flex h-screen w-[50%] items-center justify-center bg-[#f5f5f5]">
@@ -28,7 +35,10 @@ export default function Login() {
           </p>
 
           {/* the Form part*/}
-          <form className="flex w-full flex-col gap-4">
+          <form
+            className="flex w-full flex-col gap-4"
+            onSubmit={navDash}
+          >
             <div className="flex gap-2">
               <input
                 type="text"
