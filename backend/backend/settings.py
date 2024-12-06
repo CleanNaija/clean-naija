@@ -42,6 +42,13 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
     'drf_yasg',
+    'corsheaders',
+]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",  # Frontend development server (e.g., React, Vue)
+    "http://127.0.0.1:3000",
+    "http://127.0.0.1:5173",
+    #"http://yourfrontenddomain.com",  # Add production URLs here
 ]
 
 # settings.py
@@ -51,6 +58,7 @@ AUTH_USER_MODEL = 'waste.CustomUser'
 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # this should be added at the top
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

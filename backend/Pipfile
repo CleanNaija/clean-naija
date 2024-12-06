@@ -14,6 +14,7 @@ django-osm-field = "*"
 djangorestframework-simplejwt = {extras = ["blacklist"], version = "*"}
 drf-yasg = "*"
 gdal = "==3.8.4"
+django-cors-headers = "*"
 
 [dev-packages]
 
