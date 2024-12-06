@@ -1,7 +1,7 @@
 import { nav } from "@/lib/data";
 import clsx from "clsx";
 import Link from "next/link";
-export default function Nav({ opened }: { opened: Boolean }) {
+export default function Nav({ opened }: { opened: boolean }) {
   return (
     <nav
       className={clsx(

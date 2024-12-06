@@ -12,9 +12,9 @@ export default function Login() {
 
   const [state, setState] = useState<Registration>({
     firstname: "David",
-    lastname: "",
-    username: "",
-    password: "",
+    lastname: "Omoyajowo",
+    username: "Damdave",
+    password: "kdhflsho",
   });
 
   useEffect(() => {

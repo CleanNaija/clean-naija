@@ -7,7 +7,7 @@ import Footer from "../ui/Home/Footer";
 import Table from "../ui/Dashboard/Table";
 
 export default function Page() {
-  const [opened, setOpened] = useState<Boolean>(false);
+  const [opened, setOpened] = useState<boolean>(false);
   const [startdate] = useState(new Date());
   const [date] = useState<Date | undefined>(new Date(2024, 11, 18));
   const [endDate, setEndDate] = useState<Date | undefined>();

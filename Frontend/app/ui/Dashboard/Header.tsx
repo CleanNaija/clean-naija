@@ -2,7 +2,7 @@ export default function Header({
   opened,
   setOpened,
 }: {
-  opened: Boolean;
+  opened: boolean;
   setOpened: Function;
 }) {
   return (
