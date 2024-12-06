@@ -1,3 +1,12 @@
+import os 
+from urllib.parse import urlparse 
+
+
+# Get the DATABASE_URL from environment variables
+DATABASE_URL = os.getenv('DATABASE_URL', 'postgres://admin:admin@db:5432/waste_management')
+
+# Parse the DATABASE_URL to break it into its components
+url = urlparse(DATABASE_URL)
 
 
 from pathlib import Path
@@ -83,15 +92,16 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-     'default': {
+    'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'waste_management',
         'USER': 'admin',
-        'PASSWORD': 'oyindamola',
-        'HOST': 'localhost',
+        'PASSWORD': 'admin',
+        'HOST': 'db',  # Matches the service name in your docker-compose.yml
         'PORT': '5432',
+    }
 }
-}
+
 
 
 # Password validation

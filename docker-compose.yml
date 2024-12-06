@@ -1,0 +1,42 @@
+
+
+services:
+  backend:
+    build:
+      context: ./backend  # Path to your backend code
+    container_name: backend
+    volumes:
+      - ./backend:/waste_management_app
+    ports:
+      - "8000:8000"  # Expose port 8000 for the backend
+    environment:
+      - POSTGRES_USER=admin  # Database user
+      - POSTGRES_PASSWORD=admin  # Database password
+      - POSTGRES_DB=waste_management  # Database name
+      - DJANGO_SETTINGS_MODULE=backend.settings  # Make sure to set this according to your project structure
+    depends_on:
+      - db
+    networks:
+      - app_network
+    command: pipenv run python manage.py runserver 0.0.0.0:8000
+
+  db:
+    image: postgis/postgis:13-3.1
+    container_name: db
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: waste_management
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  pg_data:

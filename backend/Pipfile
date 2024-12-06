@@ -4,16 +4,16 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+django = "*"
 djangorestframework = "*"
 redis = "*"
 celery = "*"
 psycopg2 = "*"
-gdal = "==3.4.1"
 pillow = "==8.4.0"
-django = "*"
 django-osm-field = "*"
 djangorestframework-simplejwt = {extras = ["blacklist"], version = "*"}
 drf-yasg = "*"
+gdal = "==3.8.4"
 
 [dev-packages]
 
