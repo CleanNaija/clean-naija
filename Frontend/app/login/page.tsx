@@ -1,11 +1,40 @@
 "use client";
+import { Registration } from "@/lib/definitions";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Login() {
   const router = useRouter();
   const navDash = () => {
     router.push("/dashboard");
   };
+
+  const [state, setState] = useState<Registration>({
+    firstname: "David",
+    lastname: "",
+    username: "",
+    password: "",
+  });
+
+  useEffect(() => {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(state),
+    };
+    const fetchp = () => {
+      fetch("http://localhost:8000/api/register", options)
+        .then((response) => {
+          return response.json();
+        })
+        .then((response) => console.log(response));
+    };
+
+    fetchp();
+  }, [state]);
   return (
     <div className="roboto flex h-[100vh] w-[100vw]">
       <section className="flex h-screen w-[50%] items-center justify-center bg-[#f5f5f5]">
@@ -26,19 +55,16 @@ export default function Login() {
           </h2>
           <p className="mb-4 text-[0.875rem] text-gray-600">
             Already have an account?{" "}
-            <a
-              href="/login"
+            <Link
+              href=""
               className="font-medium text-[#06402b] hover:underline"
             >
               Sign In
-            </a>
+            </Link>
           </p>
 
           {/* the Form part*/}
-          <form
-            className="flex w-full flex-col gap-4"
-            onSubmit={navDash}
-          >
+          <form className="flex w-full flex-col gap-4" onSubmit={navDash}>
             <div className="flex gap-2">
               <input
                 type="text"
