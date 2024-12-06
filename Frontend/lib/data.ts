@@ -69,3 +69,38 @@ export const nav: Navlink[] = [
     href: "",
   },
 ];
+
+export const transactions = [
+  {
+    id: 1,
+    name: "Lajolo Waste Disposal",
+    date: "3rd December, 2024",
+    amount: "#5,000.00",
+    status: "Completed",
+    paymentMethod: "Debit Card **** 4186",
+  },
+  {
+    id: 2,
+    name: "Lajolo Waste Disposal",
+    date: "3rd December, 2024",
+    amount: "#5,000.00",
+    status: "Completed",
+    paymentMethod: "Debit Card **** 4186",
+  },
+  {
+    id: 3,
+    name: "Lajolo Waste Disposal",
+    date: "3rd December, 2024",
+    amount: "#5,000.00",
+    status: "Completed",
+    paymentMethod: "Debit Card **** 4186",
+  },
+  {
+    id: 4,
+    name: "Lajolo Waste Disposal",
+    date: "3rd December, 2024",
+    amount: "#5,000.00",
+    status: "Completed",
+    paymentMethod: "Debit Card **** 4186",
+  },
+];
