@@ -38,7 +38,7 @@ COPY . /waste_management_app/
 ENV PYTHONUNBUFFERED 1
 
 # Expose the port the app will run on
-EXPOSE 8000
+EXPOSE 8001
 
 # Run the Django development server (you can replace this with Gunicorn for production)
-CMD ["pipenv", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["pipenv", "run", "python", "manage.py", "runserver", "0.0.0.0:8001"]

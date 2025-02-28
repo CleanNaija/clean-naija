@@ -24,8 +24,9 @@ SECRET_KEY = 'django-insecure-313i_hb54+siqmh$z)y#avxmrim(_*0s3$o$g63yrg@sh=fjj4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
+#ALLOWED_HOSTS=['localhost', '127.0.0.1', 'example.com', '.example.com', '123.45.67.89'] //EXAMPLE FOR PRODUCTION 
 
 # Application definition
 
@@ -48,6 +49,11 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Frontend development server (e.g., React, Vue)
     "http://127.0.0.1:3000",
     "http://127.0.0.1:5173",
+    "http://127.0.0.1:8000",
+    "http://127.0.0.1:8080",
+    "http://127.0.0.1:8001",
+    
+ 
     #"http://yourfrontenddomain.com",  # Add production URLs here
 ]
 
@@ -164,7 +170,7 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.UserRateThrottle',
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'user': '5/minute',  # Allow 5 requests per minute per user
+        'user': '50/minute',  # Allow 5 requests per minute per user
     },
 }
 from datetime import datetime,timedelta
