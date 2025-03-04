@@ -5,8 +5,8 @@ services:
       context: ./backend  # Path to your backend code
     container_name: backend
     volumes:
-      - ./backend:/waste_management_app  # Mount the backend code into the container
-      - ./pip_cache:/home/chasfat/.cache/pip  # Mount custom pip cache directory for optimized installs
+      - ./backend:/waste_management_app
+      - ./pip_cache:c:\users\user\appdata\local\pip\cache
     ports:
       - "8001:8001"  # Expose port 8000 for the backend
     environment:
@@ -14,7 +14,7 @@ services:
       - POSTGRES_PASSWORD=admin  # Database password
       - POSTGRES_DB=waste_management  # Database name
       - DJANGO_SETTINGS_MODULE=backend.settings  # Make sure to set this according to your project structure
-      - PIP_CACHE_DIR=/home/chasfat/.cache/pip  # Specify the cache location explicitly for pipenv
+      - PIP_CACHE_DIR=c:\users\user\appdata\local\pip\cache
     depends_on:
       - db  # Ensure the backend waits for the database to be available
     networks:
