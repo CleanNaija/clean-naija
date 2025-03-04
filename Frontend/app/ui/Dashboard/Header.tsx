@@ -3,7 +3,7 @@ export default function Header({
   setOpened,
 }: {
   opened: boolean;
-  setOpened: Function;
+  setOpened: (value: boolean) => void;
 }) {
   return (
     <header className="fixed flex h-[10vh] w-[100vw] items-center gap-[1.875rem] bg-[#06402b] px-5 pr-[3.75rem]">

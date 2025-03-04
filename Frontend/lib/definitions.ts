@@ -10,8 +10,9 @@ export type Navlink = {
 };
 
 export type Registration = {
-  firstname: string;
-  lastname: string;
+  first_name: string;
+  last_name: string;
   username: string;
   password: string;
+  email: string;
 };

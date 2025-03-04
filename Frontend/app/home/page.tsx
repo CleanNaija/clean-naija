@@ -4,7 +4,6 @@ import Header from "@/app/ui/Home/Header";
 import Button from "@/app/ui/Home/Button";
 import Footer from "@/app/ui/Home/Footer";
 
-
 export default function Home() {
   const benefits: React.ReactNode[] = [
     <>
@@ -19,8 +18,6 @@ export default function Home() {
       <br /> waste management solutions.
     </>,
   ];
-
-
 
   return (
     <div className="roboto w-[100vw]">
@@ -158,7 +155,7 @@ export default function Home() {
           <Button />
         </div>
       </section>
-     <Footer/>
+      <Footer />
     </div>
   );
 }
