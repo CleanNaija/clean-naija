@@ -23,6 +23,28 @@ from .serializers import CustomUserSerializer
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.permissions import AllowAny
 
+
+class RegisterView(APIView):
+    """
+    Register a new user and return JWT tokens
+    """
+    authentication_classes = []  # Disable authentication for this view
+    permission_classes = [AllowAny]  # Allow anyone to access the registration endpoint
+
+    def post(self, request, *args, **kwargs):
+        serializer = CustomUserSerializer(data=request.data)
+        if serializer.is_valid():
+            user = serializer.save()  # This will hash the password
+            refresh = RefreshToken.for_user(user)
+            access_token = str(refresh.access_token)
+            return Response({
+                'user': serializer.data,
+                'access': access_token,
+                'refresh': str(refresh),
+            }, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+'''
 class RegisterView(APIView):
     """
         Register a new user and return JWT tokens
@@ -43,11 +65,13 @@ class RegisterView(APIView):
             },status=status.HTTP_201_CREATED)
         return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
     
-
 class LoginView(APIView):
     """
         Login a user and return JWT tokens
     """
+
+    authentication_classes = []  # Disable authentication for this view
+    permission_classes = [AllowAny]  # Allow anyone to access the login endpoint
     def post(self,request,*args,**kwargs):
         username=request.data.get('username')
         password=request.data.get('password')
@@ -62,8 +86,48 @@ class LoginView(APIView):
                 'refresh':str(refresh),
             })
         return Response({"error":"Invalid credentials"},status=status.HTTP_401_UNAUTHORIZED)
-    
+'''  
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.permissions import AllowAny
+from django.contrib.auth import get_user_model
+from rest_framework_simplejwt.tokens import RefreshToken
 
+class LoginView(APIView):
+    authentication_classes = []  # Disable authentication for this view
+    permission_classes = [AllowAny]  # Allow anyone to access the login endpoint
+
+    def post(self, request, *args, **kwargs):
+        username = request.data.get('username')
+        password = request.data.get('password')
+
+        # Debug: Print the username and password
+        print(f"Username: {username}, Password: {password}")
+
+        user = get_user_model().objects.filter(username=username).first()
+
+        # Debug: Print the user object and hashed password
+        if user:
+            print(f"User: {user}")
+            print(f"Stored hashed password: {user.password}")
+        else:
+            print("User not found")
+
+        if user and user.check_password(password):
+            refresh = RefreshToken.for_user(user)
+            access_token = str(refresh.access_token)
+            return Response({
+                'access': access_token,
+                'refresh': str(refresh),
+            })
+        else:
+            # Debug: Print why the login failed
+            if not user:
+                print("User not found")
+            else:
+                print("Password is incorrect")
+            return Response({"error": "Invalid credentials"}, status=status.HTTP_401_UNAUTHORIZED)
 class TokenRefreshView(APIView):
     """
         Refresh JWT token using refresh token 

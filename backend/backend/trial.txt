@@ -1,0 +1,24 @@
+CustomUser/ User 
+fields are : first_name, last_name, username, is_verified , role, phone_number, address
+purpose: for registration,login etc 
+
+WasteBin 
+fields are : address, location,bin_type,status,capacity, 
+
+WasteCollectionRequest
+fields are : user,address,collection_date,location,waste_type,status,priority
+
+WasteType
+fields are : name,description,icon,is_active
+
+CollectionPoint
+fields are: name,location,address,description,collection_date,capacity,contact_info,status,operating_hours
+
+CollectionRequest
+fields are: user,waste_type,collection_point,description,status
+    
+Report
+fields are: user,report_type,description,status,assigned_to
+
+WasteAnalytics
+fields are: waste_type,total_collected,total_requests,average_collected_per_day,average_collected_per_day,average_waste_per_collection

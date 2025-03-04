@@ -4,7 +4,37 @@ from django.contrib.auth import get_user_model
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model=get_user_model()
-        fields=('id', 'username', 'email', 'first_name', 'last_name', 'role', 'phone_number', 'address')
+        fields=('id', 'username', 'email', 'first_name', 'last_name', 'role', 'phone_number', 'address','password')
+        extra_kwargs={
+            'password':{
+                'write_only':True # This is to ensure the password is write-only and not returned in the response
+            }
+        }
+
+    def create(self, validated_data):
+        password = validated_data.pop('password', None)
+        user = self.Meta.model(**validated_data)
+        if password:
+            user.set_password(password)  # This hashes the password
+        
+        user.save()
+        return user
+        
+        def update(self,instance,validated_data):
+            #Extract the password from the validated data 
+            password=validated_data.pop('password',None)
+
+            #Update the user instance with the remaining data 
+            for attr,value in validated_data.items():
+                setattr(instance,attr,value)
+
+            #Hash the password and set it for the user if provided
+            if password:
+                instance.set_password(password)
+
+            #Save the updated user to the database
+            instance.save()
+            return instance 
         
 
 # serializers.py
